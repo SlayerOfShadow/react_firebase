@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { auth } from "../../firebase";
+import { auth, signInWithGoogle } from "../../firebase";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -34,6 +34,7 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
         <button type="submit">Log In</button>
+        <button onClick={signInWithGoogle}>Log In with Google</button>
       </form>
     </div>
   );

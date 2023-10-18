@@ -27,7 +27,7 @@ const Books = ({ firebaseApp }) => {
             <h2>My Books:</h2>
             <ul>
                 {books.map((book) => (
-                    <div key={book.Author}><b>{book.Title}</b> written by {book.Author}</div>
+                    <div key={book.Title}><b>{book.Title}</b> written by {book.Author}</div>
                 ))}
             </ul>
         </div>
