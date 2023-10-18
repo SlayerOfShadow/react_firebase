@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { auth } from "../../firebase";
+import { auth, createUserDocument } from "../../firebase";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -10,7 +10,7 @@ const SignUp = () => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
+        createUserDocument(userCredential)
       })
       .catch((error) => {
         console.log(error);

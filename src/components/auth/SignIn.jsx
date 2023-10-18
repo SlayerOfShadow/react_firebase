@@ -1,16 +1,23 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { auth, signInWithGoogle } from "../../firebase";
+import { auth, getBookDocument, getUserDocument, signInWithGoogle } from "../../firebase";
 
-const SignIn = () => {
+
+const SignIn = ({books, setBooks}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const signIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
+      .then( async (userCredential) => {
+        const user = await getUserDocument(userCredential);
+        const tempBooks = [];
+        user.Books.map(async (book) => {
+          const newBook = await getBookDocument(book._key.path.segments[6])
+          tempBooks.push(newBook)
+        })
+        setBooks(tempBooks)
       })
       .catch((error) => {
         console.log(error);

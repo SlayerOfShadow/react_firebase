@@ -1,17 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import AuthDetails from './components/AuthDetails';
 import Books from './components/Books';
+import { useState } from 'react';
 
 function App() {
+
+  const [books, setBooks] = useState([])
+
   return (
     <div className="App">
-      <SignIn />
+      <SignIn books={books} setBooks={setBooks} />
       <SignUp />
       <AuthDetails />
-      <Books />
+      <Books books={books} />
     </div>
   );
 }
