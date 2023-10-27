@@ -17,7 +17,7 @@ const Books = ({ firebaseApp, books }) => {
 
     //         setBooks(booksData); // Update the state with the fetched books
     //     };
-
+    
     //     fetchData();
     // }, [firebaseApp]);
 
@@ -25,10 +25,9 @@ const Books = ({ firebaseApp, books }) => {
         <div>
             <h2>My Books:</h2>
             <ul>
-                {console.log(books)}
                 {books.map((book, index) => (
                     <div key={index}><b>{book.Title}</b> written by {book.Author}</div>
-                    ))}
+                ))}
             </ul>
         </div>
     );

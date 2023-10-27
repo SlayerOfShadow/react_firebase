@@ -14,10 +14,10 @@ const SignIn = ({books, setBooks}) => {
         const user = await getUserDocument(userCredential);
         const tempBooks = [];
         user.Books.map(async (book) => {
-          const newBook = await getBookDocument(book._key.path.segments[6])
-          tempBooks.push(newBook)
+          const newBook = await getBookDocument(book._key.path.segments[6]);
+          tempBooks.push(newBook);
         })
-        setBooks(tempBooks)
+        setBooks(tempBooks);
       })
       .catch((error) => {
         console.log(error);
